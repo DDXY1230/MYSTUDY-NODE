@@ -36,4 +36,5 @@ socket.sockets.on('connection', function (socket) {
     socket.on('hellotoo', function(data) {
         console.log(data)
     })
+    socket.broadcast.emit('a') //广播
 })
