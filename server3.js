@@ -2,7 +2,8 @@ let http = require('http')
 let fs = require('fs')
 let io = require('socket.io')
 
-let documentRoot = '/Users/mac/Desktop/node学习笔记/test/example1.html' // 这里是先设置跟路径
+let documentRoot = '/Users/mac/Desktop/node学习笔记/test/example2.html' // 这里是先设置跟路径
+console.log('服务开启了')
 
 let httpServer = http.createServer(function (req, res) {
     // console.log(req)
@@ -29,7 +30,10 @@ let httpServer = http.createServer(function (req, res) {
 }).listen(8880)
 
 let socket = io.listen(httpServer)
-socket.sockets.on('connect', function (socket) {
+socket.sockets.on('connection', function (socket) {
     console.log('有人通过socket进来了')
-
+    socket.emit('hello', '欢迎')
+    socket.on('hellotoo', function(data) {
+        console.log(data)
+    })
 })
