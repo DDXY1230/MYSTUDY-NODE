@@ -15,7 +15,7 @@ app.use((ctx, next) => {
     console.log('ctx===》', ctx)
     console.log('开始执行了啊')
     const expire = Date.now() + 100
-    while (Date.now() < expire) {}
+    while (Date.now() < expire) {}//这里时同步，需要执行完了才会进行下去
     ctx.body = {
         name: '小田田在3000端口启动了一个服务'
     }
