@@ -15,8 +15,21 @@ const app = new KKB()
 //     res.writeHead(200)
 //     res.end('hi xyz')
 // })
-app.use(ctx => {
-    ctx.body = 'hhhhh'
+app.use(async (ctx, next) => {
+    await next()
+    ctx.body += 'ddd'
+})
+app.use(async (ctx, next) => {
+    await next()
+    ctx.body += 'aaa'
+})
+app.use(async (ctx, next) => {
+    await next()
+    ctx.body += 'bbb'
+})
+app.use(async (ctx) => {
+    // await next()
+    ctx.body = 'ccc'
 })
 app.listen(3000, () => {
     console.log('执行了自己封装的服务')
