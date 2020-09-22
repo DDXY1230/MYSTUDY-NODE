@@ -16,7 +16,7 @@ const app = new KKB()
 //     res.end('hi xyz')
 // })
 app.use(ctx => {
-    ctx.body = 'hahhahhhah'
+    ctx.body = 'hhhhh'
 })
 app.listen(3000, () => {
     console.log('执行了自己封装的服务')
