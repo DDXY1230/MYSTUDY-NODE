@@ -1,3 +1,14 @@
+const fs = require('fs')
+test('集成测试 测试生成测试代码的文件', () => {
+    //准备环境
+    //删除测试文件
+    fs.rmdirSync(__dirname + '/data/__test__', {
+        recursive: true // true 表示文件夹下面有文件一并删除
+    })
+    const src = new (require('../index'))()
+    src.genTestSource(__dirname + '/data')
+})
+
 test('测试测试代码生成', () => {
     const src = new(require('../index'))()
     const ret = src.getTestSource('fun', 'class')
