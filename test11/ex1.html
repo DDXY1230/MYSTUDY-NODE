@@ -14,13 +14,49 @@
             name: 'alice',
             age: '13'
         }
-        for (const key in arr) {
-            console.log(key) // 会输出数组的下标
-        }
+        // for (const key in arr) {
+        //     console.log(key) // 会输出数组的下标
+        // }
 
-        for (const k of arr) {
-            console.log(k) // 会输出数组的值，这个循环不能用于对象，因为对象没有迭代器
+        // for (const k of arr) {
+        //     console.log(k) // 会输出数组的值，这个循环不能用于对象，因为对象没有迭代器
+        // }
+
+        //clone 深拷贝，不会影响到原始数据，此方法可以用来拷贝任意数据
+        function clone(obj) {
+            let v = null
+            if (typeof obj === 'object' && obj !== null) {
+                v = obj instanceof Array ? [] : {}
+                for (const key in obj) {
+                    v[key] = clone(obj[key])
+                }
+            } else {
+                v = obj
+            }
+            return v
         }
+        let obj2 = clone(obj)
+        obj2.hobby = 'gitar'
+        console.log(obj)
+        console.log(obj2)
+        // 对象的拷贝
+        function copy(obj) {
+            let v = obj instanceof Array ? [] : {}
+            for (const k in obj) {
+                if (typeof obj[k] === 'object') {
+                    v[k] = copy(obj[k])
+                } else {
+                    v[k] = obj[k]
+                }
+            }
+            return v
+        }
+        console.log('------------------------')
+        let aa1 = copy(obj)
+        let aa2 = copy(arr)
+
+        console.log(aa1)
+        console.log(aa2)
     </script>
 </body>
 
