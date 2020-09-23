@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ['1hhh', '2hhh', '3hhh', '4hhh']
+        let obj = {
+            name: 'alice',
+            age: '13'
+        }
+        for (const key in arr) {
+            console.log(key) // 会输出数组的下标
+        }
+
+        for (const k of arr) {
+            console.log(k) // 会输出数组的值，这个循环不能用于对象，因为对象没有迭代器
+        }
+    </script>
+</body>
+
+</html>
