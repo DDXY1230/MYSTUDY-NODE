@@ -27,7 +27,7 @@ http.createServer((req, res) => {
         //2. Cache-control的优先级会比Expires的优先级高，以下是20秒更新一次
         // res.setHeader('Cache-control', 'max-age=20')
         //---------------------------------------
-        // 协商缓存
+        // 协商缓存 1
         // res.setHeader('Cache-Control', 'no-cache') // 禁止强缓存的操作
         // res.setHeader('last-modified', new Date().toUTCString())
         // if(new Date(req.headers['if-modified-since']).getTime() + 5*1000 > Date.now()) {
@@ -37,6 +37,7 @@ http.createServer((req, res) => {
         //     return
         // }
         //-------------------------------------------
+        // 协商缓存 2
         res.setHeader('Cache-Control', 'no-cache') // 禁止强缓存的操作
         const crypto = require('crypto') // 在nodejs中用这个包进行加密
         const hash = crypto.createHash('sha1').update(content).digest('hex') // 二进制表象为16进制
