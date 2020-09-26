@@ -6,6 +6,8 @@ let express = require('express')
 
 // 加载模版，处理模版
 let swig = require('swig')
+// 加载数据库模块
+let mongoose = require('mongoose')
 // 创建app应用 这里等同于Nodejs中的Http.createServer()
 let app = express()
 // 设置静态文件托管,当用户访问的url以/public开始，
@@ -64,5 +66,7 @@ app.use('/', require('./routers/main'))
 //     res.statusCode = 304
 //     res.send('body {background:red}')
 // })
+// 连结数据库
+mongoose.connect()
 // 监听http请求
 app.listen(8081)
