@@ -29,27 +29,32 @@ app.set('view engine', 'html')
 swig.setDefaults({
     cache: false
 })
+// 以下划分模块进行开发
+app.use('/admin', require('./routers/admin'))
+app.use('/api', require('./routers/api'))
+app.use('/', require('./routers/main'))
+
 /**
  * 首页
  */
-app.get('/', function (req, res, next) {
-    // res.writeHeader(200, {
-    //     'content-type': 'text/html;charset="utf-8"'
-    // })
-    // res.writeHead(200, {
-    //     'content-type': 'text/html;charset="utf-8"'
-    // })
+// app.get('/', function (req, res, next) {
+//     // res.writeHeader(200, {
+//     //     'content-type': 'text/html;charset="utf-8"'
+//     // })
+//     // res.writeHead(200, {
+//     //     'content-type': 'text/html;charset="utf-8"'
+//     // })
 
-    // res.end('<h1>欢迎光临我的博客!!!</h1>')
+//     // res.end('<h1>欢迎光临我的博客!!!</h1>')
 
-    //---注意： 用下面的res.render(),那么上面的res.writeHead()不需要写了
+//     //---注意： 用下面的res.render(),那么上面的res.writeHead()不需要写了
 
 
-    // 读取views目录下的指定文件，解析并且返回给客户端 ,
-    // 第一个参数：默认找到views的index.html
-    // 第二个参数：传递给模版所需要使用的数据
-    res.render('index.html') // 实验失败
-})
+//     // 读取views目录下的指定文件，解析并且返回给客户端 ,
+//     // 第一个参数：默认找到views的index.html
+//     // 第二个参数：传递给模版所需要使用的数据
+//     res.render('index.html') 
+// })
 // TODO：以下测试未通过，明明body设置成背景色为红色，莫有反应
 // app.get('/main.css', function (req, res, next) {
 //     res.setHeader('content-type', 'text/css')
