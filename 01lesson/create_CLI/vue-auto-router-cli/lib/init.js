@@ -7,7 +7,7 @@ const {
     clone
 } = require('./download')
 const spawn = async(...args) => {
-    // log流对接 
+    // log流对接 子进程对接主进程
     // 封装成promise风格的
     const { spawn } = require('child_process')
     return new Promise(resolve => {

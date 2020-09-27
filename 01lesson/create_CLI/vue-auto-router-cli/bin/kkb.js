@@ -12,5 +12,9 @@ program.command('init <name>')
 //     console.log('init ' + name)
 // })
 .action(require('../lib/init'))
+
+program.command('refresh')
+.description('refresh routers...')
+.action(require('../lib/refresh'))
 // process 描述执行中的主要进程，argv 执行中的所有参数
 program.parse(process.argv)
