@@ -4,9 +4,9 @@ const server = http.createServer((request, response) => {
     // console.log('this is a req', getPrototypeChain(request))
     // console.log('this is a res', getPrototypeChain(response))
     // response.end('success!')
-    const {url, method} = request
+    const {url, method,headers} = request
     if(url === '/' && method === 'GET') {
-        fs.readFile('./1.js', (err, data) => {
+        fs.readFile('./test.html', (err, data) => {
             if(err) {
                 console.log('读取文件失败')
                 response.writeHead(500, {'Content-Type': 'text/plain;charset=utf-8'})
@@ -22,7 +22,10 @@ const server = http.createServer((request, response) => {
         response.writeHead(200, {'Content-Type': 'application/json'})
         // response.end返回的必须是一个字符串，所以在这里要用JSON.stringify()
         response.end(JSON.stringify({name: 'tom',age: 18}))
-    }    
+    }else if(headers.accept.indexOf('image/*') !== -1 && method === 'GET') {
+        // 所有的图片请求
+        fs.createReadStream('../../' + url).pipe(response)
+    }   
     else {
         response.statusCode = 404
         response.setHeader('Content-Type', 'text/html')
